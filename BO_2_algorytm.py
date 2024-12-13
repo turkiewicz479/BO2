@@ -9,9 +9,10 @@ class solution:
     def __str__(self):
         return (f"Kolejność wierzchołków: {self.list}, Postać: {self.champ}")
     
+    
 
     
-class postac:
+class Champion:
     def __init__(self, name, camp_mod, travel_mod ):
         self.name= name
         self.camp_mod=camp_mod
@@ -38,13 +39,16 @@ class postac:
                 f"Modyfikator zdobywania: {self.camp_mod}")
 
 class Mapa:
-    def __init__(self, matrix,available_start_nodes, available_end_nodes):
+    def __init__(self, matrix,available_start_nodes, available_end_nodes, camp_cost):
 
         #Inicjalizuje mapy.
         self.mat = matrix
         self.nodes_count = len(matrix)
         self.start_nodes=available_start_nodes
         self.end_nodes=available_end_nodes
+        self.camp_cost=camp_cost
+        if camp_cost !=self.nodes_count:
+            raise ValueError(" Mapa niepoprawna, lista kosztów celów jest krótsza od ilości celów")
         
 
     def odleglosc(self, node1, node2):
@@ -54,7 +58,7 @@ class Mapa:
         if 0 <= node1 < self.nodes_count and 0 <= node2 < self.nodes_count:
             return self.mat[node1][node2]
         else:
-            raise ValueError("Wierzchołki muszą być w zakresie od 0 do liczba_wierzcholkow - 1.")
+            raise ValueError(f"Wierzchołki muszą być w zakresie od 0 do liczba_wierzcholkow - 1. Obecna liczba wierzchołków: {self.nodes_count}")
 
     def wyswietl_macierz(self):
         #Wyświetla macierz sąsiedztwa w czytelny sposób.
@@ -71,6 +75,18 @@ class Mapa:
         random.shuffle(lista)
         champ=random.randint(0,ch_op-1)
         return solution(lista, champ)
+    def objective_fun(self, sol, champ):
+        if isinstance(sol, solution) and isinstance(champ,Champion ):
+            lista=sol.list
+            total_cost=0
+        else:
+            raise ValueError("Argument sol nie jest rozwiązaniem, jeżeli jest to lista, wybierz lub wylosuj postać i stwórz rozwiązanie")
+        for i in range(len(lista)-1):
+            total_cost+= self.odleglosc(lista[i],lista[i+1])*champ.travel_mod[champ.lvl-1]
+            total_cost += champ.camp_mod[champ.lvl - 1]*self.camp_cost[lista[i]]
+            champ.zdobycie_celu()
+        total_cost+=champ.camp_mod[champ.lvl - 1]*self.camp_cost[lista[i+1]]
+
 
 '''
 Do implementacji:   Losowanie rozwiązania
@@ -80,7 +96,8 @@ Do implementacji:   Losowanie rozwiązania
 
 #tworzymy macierz dla danego przykłądu i zbioru wierzchołków dostępnych na początku
 m1=[[100,5,5,14,16,12],[5,100,7,16,25,16],[5,7,100,12,16,14],[14,16,12,100,7,5],[16,25,16,7,100,5],[12,16,14,5,5,100]]
-nodes=[1,2,3,4,5,6]
+nodes=[1,2,3,4]
+nodes_time=[x+15 for x in nodes]
 d_start=[1,3,4,6]
 
 def main():
@@ -94,7 +111,7 @@ def main():
     ]
 
 
-    mapa = Mapa(macierz, d_start, d_start)
+    mapa = Mapa(macierz, d_start, d_start,nodes_time)
     # Sprawdzenie odległości między wierzchołkami
     print("Odległość między wierzchołkiem 0 a 1:", mapa.odleglosc(0, 1))
     print("Odległość między wierzchołkiem 2 a 3:", mapa.odleglosc(2, 3))
