@@ -1,10 +1,14 @@
+import random
+
 champ_list=['Postać 1', 'Postać 2','Postać 3']
+
 class solution:
     def __init__(self,list,champ_idx):
         self.list=list
         self.champ=champ_list[champ_idx]
     def __str__(self):
         return (f"Kolejność wierzchołków: {self.list}, Postać: {self.champ}")
+    
 
     
 class postac:
@@ -58,6 +62,15 @@ class Mapa:
         print("Macierz sąsiedztwa:")
         for wiersz in self.mat:
             print(wiersz)     
+    def random_solution(self, champ_list):
+        ch_op=len(champ_list)
+        n=self.nodes_count
+        if n <= 0:
+            raise ValueError("n musi być liczbą całkowitą większą od zera.")
+        lista = list(range(0, n ))
+        random.shuffle(lista)
+        champ=random.randint(0,ch_op-1)
+        return solution(lista, champ)
 
 '''
 Do implementacji:   Losowanie rozwiązania
@@ -87,6 +100,7 @@ def main():
     print("Odległość między wierzchołkiem 2 a 3:", mapa.odleglosc(2, 3))
     # Wyświetlenie macierzy sąsiedztwa
     mapa.wyswietl_macierz()
+    print(mapa.random_solution(champ_list))
     # Obsługa błędu dla niepoprawnych indeksów
     try:
         print("Odległość między wierzchołkiem 0 a 4:", mapa.odleglosc(0, 4))
