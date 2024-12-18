@@ -1,130 +1,129 @@
 import random
 
-champ_list=['Postać 1', 'Postać 2','Postać 3']
 
-class solution:
-    def __init__(self,list,champ_idx):
-        self.list=list
-        self.champ=champ_list[champ_idx]
-    def __str__(self):
-        return (f"Kolejność wierzchołków: {self.list}, Postać: {self.champ}")
-    
-    
 
-    
+
+# Klasa reprezentująca postać w grze
 class Champion:
-    def __init__(self, name, camp_mod, travel_mod ):
-        self.name= name
-        self.camp_mod=camp_mod
-        #self.current_camp_mod=camp_mod[0]
-        self.travel_mod=travel_mod
-        #self.current_travle_mod=travel_mod[0]
-        self.lvl=1
-        self.camps_done=0
-        self.camps_required=[1,3,6,12,24]
-
+    def __init__(self, name, camp_mod, travel_mod):
+        self.name = name  # Nazwa postaci
+        self.camp_mod = camp_mod  # Modyfikator zdobywania celów
+        self.travel_mod = travel_mod  # Modyfikator kosztu podróży
+        self.lvl = 1  # Początkowy poziom postaci
+        self.camps_done = 0  # Liczba zrealizowanych celów
+        self.camps_required = [1, 3, 6, 12, 24]  # Ilość celi wymaganych by awansować na dany poziom
 
     def zdobycie_celu(self):
-        self.camps_done+=1
-        if self.camps_done>=self.camps_required[self.lvl-1]:
-            self.lvl+=1
-            
+        # Zwiększa liczbę zdobytych celów i aktualizuje poziom, jeśli wymagania są spełnione
+        self.camps_done += 1
+        if self.camps_done >= self.camps_required[self.lvl - 1]:
+            self.lvl += 1
+    def reset(self):
+        self.lvl=1
+        self.camps_done=0
+
     def __str__(self):
-        """
-        Reprezentacja tekstowa postaci.
-        """
-        return (f"Postać: {self.name}, Poziom: {self.lvl}, "
-                f"Ilość celów: {self.camps_done}, "
-                f"Modyfikator przemieszczania: {self.travel_mod}, "
-                f"Modyfikator zdobywania: {self.camp_mod}")
+        # Tekstowa reprezentacja postaci
+        return (f"Postać: {self.name}\nPoziom: {self.lvl} \nIlość celów: {self.camps_done}\n")
 
+# Lista przykładowych postaci
+champ1=Champion('Kha\'Zix',[0.98,0.97,0.95,0.93,0.9,0.8],[1,1,0.8,0.8,0.8,0.8])
+champ2=Champion('Wukong',[1,0.99,0.97,0.95,0.9,0.9],[0.9,0.9,0.8,0.8,0.8,0.8])
+champ3=Champion('Gragas',[0.99,0.98,0.95,0.92,0.85,0.85],[1,1,0.85,0.85,0.85,0.85])
+champ_list1 = [champ1, champ2, champ3]
+
+# Klasa reprezentująca rozwiązanie (trasę i wybraną postać)
+class solution:
+    def __init__(self, list, champ_idx):
+        self.list = list  # Lista wierzchołków, które tworzą trasę
+        self.champ = champ_list1[champ_idx]  # Wybrana postać z listy
+
+    def __str__(self):
+        # Tekstowa reprezentacja rozwiązania
+        return (f"Kolejność wierzchołków: {self.list}\n{self.champ}")
+
+# Klasa reprezentująca mapę gry
 class Mapa:
-    def __init__(self, matrix,available_start_nodes, available_end_nodes, camp_cost):
-
-        #Inicjalizuje mapy.
+    def __init__(self, matrix, available_start_nodes, available_end_nodes, camp_cost):
+        # Inicjalizuje mapę z macierzą odległości, dostępnymi wierzchołkami startowymi i końcowymi oraz kosztami celów
         self.mat = matrix
-        self.nodes_count = len(matrix)
-        self.start_nodes=available_start_nodes
-        self.end_nodes=available_end_nodes
-        self.camp_cost=camp_cost
-        if camp_cost !=self.nodes_count:
-            raise ValueError(" Mapa niepoprawna, lista kosztów celów jest krótsza od ilości celów")
-        
+        self.nodes_count = len(matrix)  # Liczba wierzchołków
+        self.start_nodes = available_start_nodes
+        self.end_nodes = available_end_nodes
+        self.camp_cost = camp_cost
+        if len(camp_cost) != self.nodes_count:
+            raise ValueError("Mapa niepoprawna, lista kosztów celów jest krótsza od ilości celów")
 
     def odleglosc(self, node1, node2):
-  
-        #Zwraca odległość między dwoma wierzchołkami na podstawie macierzy sąsiedztwa.
-
+        # Zwraca odległość między dwoma wierzchołkami na podstawie macierzy sąsiedztwa
         if 0 <= node1 < self.nodes_count and 0 <= node2 < self.nodes_count:
             return self.mat[node1][node2]
         else:
             raise ValueError(f"Wierzchołki muszą być w zakresie od 0 do liczba_wierzcholkow - 1. Obecna liczba wierzchołków: {self.nodes_count}")
 
     def wyswietl_macierz(self):
-        #Wyświetla macierz sąsiedztwa w czytelny sposób.
-
+        # Wyświetla macierz sąsiedztwa w czytelny sposób
         print("Macierz sąsiedztwa:")
         for wiersz in self.mat:
-            print(wiersz)     
+            print(wiersz)
+
     def random_solution(self, champ_list):
-        ch_op=len(champ_list)
-        n=self.nodes_count
+        # Tworzy losowe rozwiązanie z losową permutacją wierzchołków i postaci
+        ch_op = len(champ_list)
+        n = self.nodes_count
         if n <= 0:
             raise ValueError("n musi być liczbą całkowitą większą od zera.")
-        lista = list(range(0, n ))
-        random.shuffle(lista)
-        champ=random.randint(0,ch_op-1)
+        lista = list(range(0, n))  # Lista wierzchołków
+        random.shuffle(lista)  # Losowe przetasowanie wierzchołków
+        champ = random.randint(0, ch_op - 1)  # Losowy indeks postaci
         return solution(lista, champ)
+
     def objective_fun(self, sol, champ):
-        if isinstance(sol, solution) and isinstance(champ,Champion ):
-            lista=sol.list
-            total_cost=0
+        # Oblicza funkcję celu na podstawie rozwiązania i modyfikatorów postaci
+        if isinstance(sol, solution) and isinstance(champ, Champion):
+            lista = sol.list
+            total_cost = 0
         else:
             raise ValueError("Argument sol nie jest rozwiązaniem, jeżeli jest to lista, wybierz lub wylosuj postać i stwórz rozwiązanie")
-        for i in range(len(lista)-1):
-            total_cost+= self.odleglosc(lista[i],lista[i+1])*champ.travel_mod[champ.lvl-1]
-            total_cost += champ.camp_mod[champ.lvl - 1]*self.camp_cost[lista[i]]
+        champ.zdobycie_celu()
+        total_cost+=champ.camp_mod[0]*self.camp_cost[lista[0]]
+        for i in range(len(lista) - 1):
+            # Koszt podróży
+            total_cost += self.odleglosc(lista[i], lista[i + 1]) * champ.travel_mod[champ.lvl - 1]
+            # Koszt zdobywania celu
+            total_cost += champ.camp_mod[champ.lvl - 1] * self.camp_cost[lista[i]]
             champ.zdobycie_celu()
-        total_cost+=champ.camp_mod[champ.lvl - 1]*self.camp_cost[lista[i+1]]
+        # Dodanie kosztu dla ostatniego celu
+        total_cost += champ.camp_mod[champ.lvl - 1] * self.camp_cost[lista[i + 1]]
+        print(f"Kolejność celów: {sol.list}\nPostać po przejsciu tych celów:\n{champ}kolejności: ")
+        #total_cost=round(total_cost,2)
+        return total_cost
+    def __str__(self):
+        self.wyswietl_macierz()
+        return f"Ilość celów: {self.nodes_count}, wierzchołki początkowe: {self.start_nodes}, wierzchołki końcowe: {self.end_nodes}"
 
 
-'''
-Do implementacji:   Losowanie rozwiązania
-                    Modyfikowanie rozwiązania (otoczenia)
-                    Funkcja celu
-'''
+# Tworzymy przykładowe dane dla mapy i celów
+m1 = [[100, 5, 5, 14, 16, 12],
+      [5, 100, 7, 16, 25, 16],
+      [5, 7, 100, 12, 16, 14],
+      [14, 16, 12, 100, 7, 5],
+      [16, 25, 16, 7, 100, 5],
+      [12, 16, 14, 5, 5, 100]]
+nodes = [0,1, 2, 3, 4, 5]
+nodes_time = [x + 15 for x in nodes]  # Koszt każdego celu
+d_start = [1, 3, 4, 6]  # Dostępne wierzchołki startowe
+map1=Mapa(m1,d_start,d_start, nodes_time)
+print(map1)
+sol1=map1.random_solution(champ_list1)
+print(sol1)
+print(map1.objective_fun(sol1,sol1.champ))
+sol1.champ.reset()
+sol2=map1.random_solution(champ_list1)
+print(sol2)
+print(map1.objective_fun(sol2,sol2.champ))
+sol2.champ.reset()
 
-#tworzymy macierz dla danego przykłądu i zbioru wierzchołków dostępnych na początku
-m1=[[100,5,5,14,16,12],[5,100,7,16,25,16],[5,7,100,12,16,14],[14,16,12,100,7,5],[16,25,16,7,100,5],[12,16,14,5,5,100]]
-nodes=[1,2,3,4]
-nodes_time=[x+15 for x in nodes]
-d_start=[1,3,4,6]
-
-def main():
-    # Przykładowa macierz sąsiedztwa (0 oznacza brak połączenia)
-    # funkcja kary -> zastopienie 0 dużą wartością
-    macierz = [
-        [0, 5, 0, 10],
-        [5, 0, 3, 0],
-        [0, 3, 0, 1],
-        [10, 0, 1, 0]
-    ]
-
-
-    mapa = Mapa(macierz, d_start, d_start,nodes_time)
-    # Sprawdzenie odległości między wierzchołkami
-    print("Odległość między wierzchołkiem 0 a 1:", mapa.odleglosc(0, 1))
-    print("Odległość między wierzchołkiem 2 a 3:", mapa.odleglosc(2, 3))
-    # Wyświetlenie macierzy sąsiedztwa
-    mapa.wyswietl_macierz()
-    print(mapa.random_solution(champ_list))
-    # Obsługa błędu dla niepoprawnych indeksów
-    try:
-        print("Odległość między wierzchołkiem 0 a 4:", mapa.odleglosc(0, 4))
-    except ValueError as e:
-        print("Błąd:", e)
-
-main()
 
 #mod_p_move=1#stworzenie listy od jeden do 18 takiej że wartości przyjmowane są rozłożone od 1 do 0.8
 #mod_p_camp=1#stworzenie listy od jeden do 18 takiej że wartości przyjmowane są rozłożone od 1 do 0.5
