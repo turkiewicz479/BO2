@@ -12,6 +12,7 @@ class Champion:
         self.lvl = 1  # Początkowy poziom postaci
         self.camps_done = 0  # Liczba zrealizowanych celów
         self.camps_required = [1, 3, 6, 12, 24]  # Ilość celi wymaganych by awansować na dany poziom
+        #5 wartośći camps required oznacza to że zaczynajac od poziomu pierwszego maksymalny to 6
 
     def zdobycie_celu(self):
         # Zwiększa liczbę zdobytych celów i aktualizuje poziom, jeśli wymagania są spełnione
@@ -24,7 +25,7 @@ class Champion:
 
     def __str__(self):
         # Tekstowa reprezentacja postaci
-        return (f"Postać: {self.name}\nPoziom: {self.lvl} \nIlość celów: {self.camps_done}\n")
+        return (f"Postać: {self.name}\nPoziom: {self.lvl} \nIlość celów: {self.camps_done}")
 
 # Lista przykładowych postaci
 champ1=Champion('Kha\'Zix',[0.98,0.97,0.95,0.93,0.9,0.8],[1,1,0.8,0.8,0.8,0.8])
@@ -84,7 +85,7 @@ class Mapa:
             lista = sol.list
             total_cost = 0
         else:
-            raise ValueError("Argument sol nie jest rozwiązaniem, jeżeli jest to lista, wybierz lub wylosuj postać i stwórz rozwiązanie")
+            raise ValueError("Argument sol (solution) nie jest rozwiązaniem, jeżeli jest to lista, wybierz lub wylosuj postać i stwórz rozwiązanie")
         champ.zdobycie_celu()
         total_cost+=champ.camp_mod[0]*self.camp_cost[lista[0]]
         for i in range(len(lista) - 1):
@@ -95,8 +96,13 @@ class Mapa:
             champ.zdobycie_celu()
         # Dodanie kosztu dla ostatniego celu
         total_cost += champ.camp_mod[champ.lvl - 1] * self.camp_cost[lista[i + 1]]
-        print(f"Kolejność celów: {sol.list}\nPostać po przejsciu tych celów:\n{champ}kolejności: ")
-        #total_cost=round(total_cost,2)
+        print(f"Kolejność celów: {sol.list}\nPostać po przejsciu tych celów:\n{champ} ")
+        if lista[1] not in self.start_nodes or lista[-1] not in self.end_nodes:
+            #nakładanie funkcji kary dla wierzchołków które nie znajduja się 
+            #w zbiorze wierzchołków początkowych lub końcowych
+            total_cost+=100
+        total_cost=round(total_cost,2)
+
         return total_cost
     def __str__(self):
         self.wyswietl_macierz()
@@ -114,25 +120,34 @@ nodes = [0,1, 2, 3, 4, 5]
 nodes_time = [x + 15 for x in nodes]  # Koszt każdego celu
 d_start = [1, 3, 4, 6]  # Dostępne wierzchołki startowe
 map1=Mapa(m1,d_start,d_start, nodes_time)
-print(map1)
-sol1=map1.random_solution(champ_list1)
-print(sol1)
-print(map1.objective_fun(sol1,sol1.champ))
-sol1.champ.reset()
-sol2=map1.random_solution(champ_list1)
-print(sol2)
-print(map1.objective_fun(sol2,sol2.champ))
-sol2.champ.reset()
+curr_sol_time=200
+curr_sol=None
+for i in range(10):
+
+    sol_loop=map1.random_solution(champ_list1)
+    sol_time=map1.objective_fun(sol_loop,sol_loop.champ)
+    print(f'Wartość funkcji celu: {sol_time}\n')
+    if sol_time<curr_sol_time:
+        curr_sol_time=sol_time
+        curr_sol=sol_loop
+    sol_loop.champ.reset()
+if curr_sol != None:
+    print("Najlepsze rozwiązanie z 10 losowych:")
+    new_sol=map1.objective_fun(curr_sol,curr_sol.champ)
+    print(f'Czas: {new_sol}')
+else:
+    print('Nie wylosowana rozwiazania które jest poprawne')
 
 
-#mod_p_move=1#stworzenie listy od jeden do 18 takiej że wartości przyjmowane są rozłożone od 1 do 0.8
-#mod_p_camp=1#stworzenie listy od jeden do 18 takiej że wartości przyjmowane są rozłożone od 1 do 0.5
 
 
-#symulacja->losowanie rozwiązania, obliczanie funkcji celu dla tego rozwiązania
-#first_node_index radnom number z przedziału 1 do 4
-#first_node=d_start[first_node_index]
-#nodes pop 
-#for i in nodes:#stworzenie lsowej permutacji
-#zbyt częste wykonywanie tego ruchu -> kara
-#algorytm ewolucyjny???
+#Stworzenie algoroytmu ewlucyjnego:
+#Badanie populacji
+#Meroda selekcji
+#sąsiedztwo
+#przebieg algorytmu
+#nakład obliczeniowy
+#21/22 stycznia?? kolokwium
+
+
+#Działanie algorytmu -> Losowanie paru rozwiazań ()
