@@ -96,7 +96,7 @@ class Mapa:
             champ.zdobycie_celu()
         # Dodanie kosztu dla ostatniego celu
         total_cost += champ.camp_mod[champ.lvl - 1] * self.camp_cost[lista[i + 1]]
-        print(f"Kolejność celów: {sol.list}\nPostać po przejsciu tych celów:\n{champ} ")
+        #print(f"Kolejność celów: {sol.list}\nPostać po przejsciu tych celów:\n{champ} ")
         if lista[1] not in self.start_nodes or lista[-1] not in self.end_nodes:
             #nakładanie funkcji kary dla wierzchołków które nie znajduja się 
             #w zbiorze wierzchołków początkowych lub końcowych
@@ -132,3 +132,22 @@ def pmx_crossover(parent1, parent2):
     # Losowanie postaci od jednego z rodziców
     champ = random.choice([parent1.champ, parent2.champ])
     return solution(child_list, champ_list1.index(champ))
+
+def mutate(solution):
+    mutation_type = random.choice(["inversion", "swap", "champion"])
+    
+    if mutation_type == "inversion":
+        # Mutacja inwersji
+        size = len(solution.list)
+        start, end = sorted(random.sample(range(size), 2))
+        solution.list[start:end] = reversed(solution.list[start:end])
+    
+    elif mutation_type == "swap":
+        # Mutacja przestawienia
+        i, j = random.sample(range(len(solution.list)), 2)
+        solution.list[i], solution.list[j] = solution.list[j], solution.list[i]
+    
+    elif mutation_type == "champion":
+        # Mutacja zmiany postaci
+        new_champ_idx = random.choice(range(len(champ_list1)))
+        solution.champ = champ_list1[new_champ_idx]

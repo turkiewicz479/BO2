@@ -30,11 +30,29 @@ for j in range(10):
             best_sol=sol_loop
         sol_loop.champ.reset()
     if best_sol != None:
-        print("Najlepsze rozwiązanie z 10 losowych:")
-        new_sol=map1.objective_fun(best_sol,best_sol.champ)
-        print(f'Czas: {new_sol}')
+        sol_list.append(best_sol)
     else:
         print('Nie wylosowana rozwiazania które jest poprawne')
+
+for best_sol in sol_list:
+    sol_time=map1.objective_fun(best_sol,best_sol.champ)
+    best_sol.champ.reset()
+    print(best_sol)
+    print(f'Czas: {sol_time}\n')
+
+sol_child=pmx_crossover(sol_list[0],sol_list[1])
+print("Utworzony potomek:")
+child_time=map1.objective_fun(sol_child,sol_child.champ)
+print(sol_child)
+print(f"Czas: {child_time}")
+sol_child.champ.reset()
+
+mutate(sol_child)
+print("Zmutowany potomek:")
+child_time=map1.objective_fun(sol_child,sol_child.champ)
+print(sol_child)
+print(f"Czas: {child_time}")
+sol_child.champ.reset()
 
 
 
