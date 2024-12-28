@@ -17,6 +17,7 @@ map1=Mapa(m1,d_start,d_start, nodes_time)
 #to rozwizanie jest bardzo slabe i nie chcemy go zapisać
 
 sol_list=[]
+times_list=[]
 for j in range(10):
     curr_sol_time=200
     best_sol=None
@@ -31,14 +32,19 @@ for j in range(10):
         sol_loop.champ.reset()
     if best_sol != None:
         sol_list.append(best_sol)
+        times_list.append(curr_sol_time)
     else:
         print('Nie wylosowana rozwiazania które jest poprawne')
-
+print("Najlepsze rozwiązania: \n")
 for best_sol in sol_list:
     sol_time=map1.objective_fun(best_sol,best_sol.champ)
-    best_sol.champ.reset()
-    print(best_sol)
+    
+    print(best_sol.champ)
     print(f'Czas: {sol_time}\n')
+    best_sol.champ.reset()
+
+
+print(f"Rodzić 1:\n{sol_list[0]}\nCzas: {times_list[0]}\nRodzić 2:\n{sol_list[1]}\nCzas: {times_list[1]}")
 
 sol_child=pmx_crossover(sol_list[0],sol_list[1])
 print("Utworzony potomek:")
@@ -62,7 +68,7 @@ sol_child.champ.reset()
 
 #Stworzenie algoroytmu ewlucyjnego:
 #Badanie populacji
-#Meroda selekcji
+#Metoda selekcji
 #sąsiedztwo
 #przebieg algorytmu
 #nakład obliczeniowy

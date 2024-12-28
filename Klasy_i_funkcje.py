@@ -38,10 +38,11 @@ class solution:
     def __init__(self, list, champ_idx):
         self.list = list  # Lista wierzchołków, które tworzą trasę
         self.champ = champ_list1[champ_idx]  # Wybrana postać z listy
+        self.champ_name=champ_list1[champ_idx].name
 
     def __str__(self):
         # Tekstowa reprezentacja rozwiązania
-        return (f"Kolejność wierzchołków: {self.list}\n{self.champ}")
+        return (f"Kolejność wierzchołków: {self.list}\nPostać: {self.champ_name}")
 
 # Klasa reprezentująca mapę gry
 class Mapa:
@@ -112,27 +113,28 @@ def pmx_crossover(parent1, parent2):
     size = len(parent1.list)
     start, end = sorted(random.sample(range(size), 2))
     
-    # Tworzenie potomka
     child_list = [-1] * size
+    
     child_list[start:end] = parent1.list[start:end]
     
     for i in range(start, end):
-        if parent2.list[i] not in child_list:
+        val = parent2.list[i]
+        if val not in child_list:
+            while val in child_list[start:end]:
+                idx = parent1.list.index(val)
+                val = parent2.list[idx]
+            child_list[child_list.index(-1)] = val
+    
+    for i in range(size):
+        if child_list[i] == -1:
             val = parent2.list[i]
             while val in child_list:
                 idx = parent1.list.index(val)
                 val = parent2.list[idx]
-            child_list[child_list.index(-1)] = val
-
-    # Uzupełnienie brakujących pozycji
-    for i in range(size):
-        if child_list[i] == -1:
-            child_list[i] = parent2.list[i]
+            child_list[i] = val
     
-    # Losowanie postaci od jednego z rodziców
     champ = random.choice([parent1.champ, parent2.champ])
     return solution(child_list, champ_list1.index(champ))
-
 def mutate(solution):
     mutation_type = random.choice(["inversion", "swap", "champion"])
     
