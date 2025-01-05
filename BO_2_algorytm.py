@@ -47,18 +47,35 @@ for best_sol in sol_list:
 print(f"Rodzić 1:\n{sol_list[0]}\nCzas: {times_list[0]}\nRodzić 2:\n{sol_list[1]}\nCzas: {times_list[1]}")
 
 sol_child=pmx_crossover(sol_list[0],sol_list[1])
-print("Utworzony potomek:")
+print("Utworzony potomek pmx:")
 child_time=map1.objective_fun(sol_child,sol_child.champ)
 print(sol_child)
 print(f"Czas: {child_time}")
 sol_child.champ.reset()
 
-mutate(sol_child)
-print("Zmutowany potomek:")
+#mutate(sol_child)
+#print("Zmutowany potomek:")
+#child_time=map1.objective_fun(sol_child,sol_child.champ)
+#print(sol_child)
+#print(f"Czas: {child_time}")
+#sol_child.champ.reset()
+
+sol_child=cycle_crossover(sol_list[0],sol_list[1])
+print("Utworzony potomek cycle:")
 child_time=map1.objective_fun(sol_child,sol_child.champ)
 print(sol_child)
 print(f"Czas: {child_time}")
 sol_child.champ.reset()
+
+
+
+sol_child=order_crossover(sol_list[0],sol_list[1])
+print("Utworzony potomek order:")
+child_time=map1.objective_fun(sol_child,sol_child.champ)
+print(sol_child)
+print(f"Czas: {child_time}")
+sol_child.champ.reset()
+
 
 
 

@@ -153,3 +153,53 @@ def mutate(solution):
         # Mutacja zmiany postaci
         new_champ_idx = random.choice(range(len(champ_list1)))
         solution.champ = champ_list1[new_champ_idx]
+
+def cycle_crossover(parent1, parent2):
+    size = len(parent1.list)
+    
+    # Tworzenie cykli
+    child_list = [-1] * size
+    cycles = [0] * size
+    current_cycle = 1
+    
+    for i in range(size):
+        if cycles[i] == 0:  # Nowy cykl
+            val = parent1.list[i]
+            while cycles[i] == 0:
+                cycles[i] = current_cycle
+                i = parent1.list.index(parent2.list[i])
+                val = parent1.list[i]
+            current_cycle += 1
+    
+    # Tworzenie dziecka na podstawie cykli
+    for i in range(size):
+        if cycles[i] % 2 == 1:
+            child_list[i] = parent1.list[i]
+        else:
+            child_list[i] = parent2.list[i]
+    
+    # Losowanie postaci od jednego z rodziców
+    champ = random.choice([parent1.champ, parent2.champ])
+    return solution(child_list, champ_list1.index(champ))
+
+def order_crossover(parent1, parent2):
+    size = len(parent1.list)
+    start, end = sorted(random.sample(range(size), 2))
+    
+    # Dziecko początkowo puste (-1)
+    child_list = [-1] * size
+    
+    # Skopiowanie segmentu od parent1
+    child_list[start:end] = parent1.list[start:end]
+    
+    # Wypełnienie pozostałych pozycji z parent2
+    parent2_values = [val for val in parent2.list if val not in child_list]
+    idx = 0
+    for i in range(size):
+        if child_list[i] == -1:
+            child_list[i] = parent2_values[idx]
+            idx += 1
+    
+    # Losowanie postaci od jednego z rodziców
+    champ = random.choice([parent1.champ, parent2.champ])
+    return solution(child_list, champ_list1.index(champ))
