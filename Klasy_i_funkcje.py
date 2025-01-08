@@ -4,6 +4,7 @@ import random
 
 
 # Klasa reprezentująca postać w grze
+camps_required = [1, 3, 6, 12, 24]
 class Champion:
     def __init__(self, name, camp_mod, travel_mod):
         self.name = name  # Nazwa postaci
@@ -35,14 +36,17 @@ champ_list1 = [champ1, champ2, champ3]
 
 # Klasa reprezentująca rozwiązanie (trasę i wybraną postać)
 class solution:
-    def __init__(self, list, champ_idx):
+    def __init__(self, list, champ_idx, lvl=0):
         self.list = list  # Lista wierzchołków, które tworzą trasę
         self.champ = champ_list1[champ_idx]  # Wybrana postać z listy
         self.champ_name=champ_list1[champ_idx].name
-
+        self.camps_done=len(list)
+        self.lvl_after=lvl
     def __str__(self):
         # Tekstowa reprezentacja rozwiązania
         return (f"Kolejność wierzchołków: {self.list}\nPostać: {self.champ_name}")
+    def __repr__(self): 
+        return f"\n{self.champ_name}, {self.list}, {self.lvl_after}"
 
 # Klasa reprezentująca mapę gry
 class Mapa:
@@ -103,7 +107,8 @@ class Mapa:
             #w zbiorze wierzchołków początkowych lub końcowych
             total_cost+=100
         total_cost=round(total_cost,2)
-
+        sol.lvl_after=champ.lvl
+        champ.reset()
         return total_cost
     def __str__(self):
         self.wyswietl_macierz()
@@ -115,28 +120,38 @@ def pmx_crossover(parent1, parent2):
     
     child_list = [-1] * size
     
+    # Kopiowanie fragmentu od parent1
     child_list[start:end] = parent1.list[start:end]
     
+    # Wypełnianie brakujących miejsc na podstawie parent2
     for i in range(start, end):
         val = parent2.list[i]
         if val not in child_list:
-            while val in child_list[start:end]:
+            # Szukamy miejsca, gdzie ta wartość powinna trafić
+            while val in parent1.list[start:end]:
                 idx = parent1.list.index(val)
                 val = parent2.list[idx]
-            child_list[child_list.index(-1)] = val
+            # Przypisujemy do pierwszego wolnego miejsca
+            if val not in child_list:
+                child_list[child_list.index(-1)] = val
     
+    # Uzupełnienie pozostałych braków
     for i in range(size):
         if child_list[i] == -1:
             val = parent2.list[i]
-            while val in child_list:
+            while val in child_list:  # Pętla będzie trwała, dopóki nie znajdzie pustego miejsca
+                # Jeśli wartość jest już w child_list, to szukamy dalej
                 idx = parent1.list.index(val)
                 val = parent2.list[idx]
             child_list[i] = val
     
     champ = random.choice([parent1.champ, parent2.champ])
     return solution(child_list, champ_list1.index(champ))
-def mutate(solution):
-    mutation_type = random.choice(["inversion", "swap", "champion"])
+
+
+
+def mutate(solution, mutation_type):
+    #mutation_type = random.choice(["inversion", "swap", "champion"])
     
     if mutation_type == "inversion":
         # Mutacja inwersji
@@ -203,3 +218,117 @@ def order_crossover(parent1, parent2):
     # Losowanie postaci od jednego z rodziców
     champ = random.choice([parent1.champ, parent2.champ])
     return solution(child_list, champ_list1.index(champ))
+
+
+def genetic_algorithm(map_obj, champ_list, x, y, z, crossover_type, mutation_type):
+    """
+    Algorytm genetyczny dla problemu optymalizacji.
+    
+    Args:
+        map_obj (Mapa): Obiekt reprezentujący mapę.
+        champ_list (list): Lista dostępnych postaci.
+        x (int): Liczba losowych rozwiązań w początkowej populacji.
+        y (float): Procent rozwiązań poddawanych mutacji (0 <= y <= 100).
+        z (int): Liczba iteracji (pokoleń) algorytmu.
+        crossover_type (str): Typ krzyżowania ('pmx', 'cycle', 'order').
+        
+    Returns:
+        list: Lista najlepszych rozwiązań z każdego pokolenia.
+        tuple: Najlepsze rozwiązanie ogółem (solution, czas).
+    """
+    
+    
+    def crossover(parent1, parent2, crossover_type):
+        """Wybór odpowiedniego typu krzyżowania."""
+        if crossover_type == 'pmx':
+            return pmx_crossover(parent1, parent2)
+        elif crossover_type == 'cycle':
+            return cycle_crossover(parent1, parent2)
+        elif crossover_type == 'order':
+            return order_crossover(parent1, parent2)
+        else:
+            raise ValueError("Nieznany typ krzyżowania. Dostępne: 'pmx', 'cycle', 'order'.")
+
+    # Początkowe generowanie populacji
+    population = [map_obj.random_solution(champ_list) for _ in range(x)]
+    best_solutions = []  # Lista najlepszych rozwiązań w każdym pokoleniu
+    
+    for _ in range(z):
+        # Obliczanie czasu dla każdej osoby w populacji
+        ranked_population = []
+        for sol in population:
+            sol_time = map_obj.objective_fun(sol, sol.champ)  # Wywołanie objective_fun
+            ranked_population.append((sol, sol_time))
+            
+        
+        # Posortowanie populacji względem czasu
+        ranked_population.sort(key=lambda x: x[1])
+        
+        # Zapis najlepszego rozwiązania z populacji
+        best_solution = ranked_population[0]
+        best_solutions.append(best_solution)
+        
+        # Tworzenie nowej populacji przez krzyżowanie najlepszych rozwiązań
+        new_population = []
+        for i in range(0, len(ranked_population)-1, 2):
+            parent1, parent2 = ranked_population[i][0], ranked_population[i + 1][0]
+            child1 = crossover(parent1, parent2, crossover_type)
+            child2 = crossover(parent2, parent1, crossover_type)
+            new_population.append(child1)
+            new_population.append(child2)
+        print(f"Pętla iteracji: {_}, Rozmiar populacji: {len(new_population)}")
+        
+        # Mutacja określonego procenta populacji
+        mutation_count = int(len(new_population) * y / 100)
+        for _ in range(mutation_count):
+            sol_to_mutate = random.choice(new_population)
+            mutate(sol_to_mutate, mutation_type)
+        
+        # Uzupełnienie populacji o nowe losowe rozwiązania (jeśli populacja jest zbyt mała)
+        max_attempts = 1000
+        attempts = 0
+        while len(new_population) < x and attempts < max_attempts:
+            try:
+                new_population.append(map_obj.random_solution(champ_list))
+            except Exception as e:
+                attempts += 1
+                print(f"Błąd przy generowaniu losowego rozwiązania: {e}")
+        if attempts == max_attempts:
+            raise RuntimeError("Nie można wygenerować pełnej populacji.")
+
+        
+        population = new_population
+
+    # Wybranie najlepszego rozwiązania ogółem
+    overall_best = min(best_solutions, key=lambda x: x[1])
+    
+    return best_solutions, overall_best
+
+def main():
+    m1 = [[100, 5, 5, 14, 16, 12],
+      [5, 100, 7, 16, 25, 16],
+      [5, 7, 100, 12, 16, 14],
+      [14, 16, 12, 100, 7, 5],
+      [16, 25, 16, 7, 100, 5],
+      [12, 16, 14, 5, 5, 100]]
+    nodes = [0,1, 2, 3, 4, 5]
+    nodes_time = [x + 15 for x in nodes]  # Koszt każdego celu
+    d_start = [1, 3, 4, 6]  # Dostępne wierzchołki startowe
+    map1=Mapa(m1,d_start,d_start, nodes_time)
+
+    #Zakładamy że jeżeli przejscie wszystkich celów zajmie więcej niż 200 sekund 
+    #to rozwizanie jest bardzo slabe i nie chcemy go zapisać
+
+
+
+
+    #Generowanie x losowych rozwiązań, następnie stworzenie rankingu pod względem czasu rozwiązania. Następnie adekwatne krzyżowanie, rodzaj krzyżowania wybierany jako argument funkcji
+    # następnie y procent rozwiązań jest mutowanych, y również jest argumentem funkcji, nastęnie kończymy ten etap i oceniamy dopsowanie (czas rozwiązań) znowu tworzymy ranking i powtarzamy poprzednie kroki, najlepsze rozwiązanie z każdego rankingu zostaje zapisane do listy potencjalnych rozwiązań
+
+    list_of_sol, best_sol = genetic_algorithm(map1, champ_list1, 10,10,100, 'cycle', 'inversion')
+    #time=map1.objective_fun(best_sol)
+    print(list_of_sol )
+    
+    #print(time, best_sol.champ)
+
+main()
