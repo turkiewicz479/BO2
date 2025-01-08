@@ -1,5 +1,13 @@
 import random
+import numpy as np
 
+def generate_map(n):
+    A = np.random.rand(n, n)*35 # Generowanie losowej macierzy
+    symmetric_matrix = (A + A.T) / 2  # Symetryzacja
+    np.fill_diagonal(symmetric_matrix, 100)
+    nodes=np.arange(n)
+    nodes_cost=(np.random.rand(n)*10)+10
+    return symmetric_matrix, nodes_cost
 
 
 
@@ -36,17 +44,18 @@ champ_list1 = [champ1, champ2, champ3]
 
 # Klasa reprezentująca rozwiązanie (trasę i wybraną postać)
 class solution:
-    def __init__(self, list, champ_idx, lvl=0):
+    def __init__(self, list, champ_idx, lvl=0, time=None):
         self.list = list  # Lista wierzchołków, które tworzą trasę
         self.champ = champ_list1[champ_idx]  # Wybrana postać z listy
         self.champ_name=champ_list1[champ_idx].name
         self.camps_done=len(list)
         self.lvl_after=lvl
+        self.time=time
     def __str__(self):
         # Tekstowa reprezentacja rozwiązania
         return (f"Kolejność wierzchołków: {self.list}\nPostać: {self.champ_name}")
     def __repr__(self): 
-        return f"\n{self.champ_name}, {self.list}, {self.lvl_after}"
+        return f"\n{self.champ_name}, {self.list}, {self.lvl_after}, {self.time}"
 
 # Klasa reprezentująca mapę gry
 class Mapa:
@@ -58,7 +67,7 @@ class Mapa:
         self.end_nodes = available_end_nodes
         self.camp_cost = camp_cost
         if len(camp_cost) != self.nodes_count:
-            raise ValueError("Mapa niepoprawna, lista kosztów celów jest krótsza od ilości celów")
+            raise ValueError("Mapa niepoprawna, lista kosztów celów jest inna niż ilość celów")
 
     def odleglosc(self, node1, node2):
         # Zwraca odległość między dwoma wierzchołkami na podstawie macierzy sąsiedztwa
@@ -105,9 +114,10 @@ class Mapa:
         if lista[1] not in self.start_nodes or lista[-1] not in self.end_nodes:
             #nakładanie funkcji kary dla wierzchołków które nie znajduja się 
             #w zbiorze wierzchołków początkowych lub końcowych
-            total_cost+=100
+            total_cost+=100*self.nodes_count
         total_cost=round(total_cost,2)
         sol.lvl_after=champ.lvl
+        sol.time=total_cost
         champ.reset()
         return total_cost
     def __str__(self):
@@ -301,34 +311,8 @@ def genetic_algorithm(map_obj, champ_list, x, y, z, crossover_type, mutation_typ
 
     # Wybranie najlepszego rozwiązania ogółem
     overall_best = min(best_solutions, key=lambda x: x[1])
-    
-    return best_solutions, overall_best
+    only_solutions=[]
+    for sol in best_solutions:
+        only_solutions.append(sol[0])
+    return only_solutions, overall_best
 
-def main():
-    m1 = [[100, 5, 5, 14, 16, 12],
-      [5, 100, 7, 16, 25, 16],
-      [5, 7, 100, 12, 16, 14],
-      [14, 16, 12, 100, 7, 5],
-      [16, 25, 16, 7, 100, 5],
-      [12, 16, 14, 5, 5, 100]]
-    nodes = [0,1, 2, 3, 4, 5]
-    nodes_time = [x + 15 for x in nodes]  # Koszt każdego celu
-    d_start = [1, 3, 4, 6]  # Dostępne wierzchołki startowe
-    map1=Mapa(m1,d_start,d_start, nodes_time)
-
-    #Zakładamy że jeżeli przejscie wszystkich celów zajmie więcej niż 200 sekund 
-    #to rozwizanie jest bardzo slabe i nie chcemy go zapisać
-
-
-
-
-    #Generowanie x losowych rozwiązań, następnie stworzenie rankingu pod względem czasu rozwiązania. Następnie adekwatne krzyżowanie, rodzaj krzyżowania wybierany jako argument funkcji
-    # następnie y procent rozwiązań jest mutowanych, y również jest argumentem funkcji, nastęnie kończymy ten etap i oceniamy dopsowanie (czas rozwiązań) znowu tworzymy ranking i powtarzamy poprzednie kroki, najlepsze rozwiązanie z każdego rankingu zostaje zapisane do listy potencjalnych rozwiązań
-
-    list_of_sol, best_sol = genetic_algorithm(map1, champ_list1, 10,10,100, 'cycle', 'inversion')
-    #time=map1.objective_fun(best_sol)
-    print(list_of_sol )
-    
-    #print(time, best_sol.champ)
-
-main()
