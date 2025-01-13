@@ -9,6 +9,14 @@ def generate_map(n):
     nodes_cost=(np.random.rand(n)*10)+10
     return symmetric_matrix, nodes_cost
 
+def generate_unique_numbers(x, a, b):
+  if x > b - a + 1:
+    raise ValueError("Zbyt wiele liczb do wygenerowania dla danego zakresu.")
+
+  numbers = set()
+  while len(numbers) < x:
+    numbers.add(random.randint(a, b))
+  return list(numbers)
 
 
 # Klasa reprezentująca postać w grze
@@ -26,8 +34,10 @@ class Champion:
     def zdobycie_celu(self):
         # Zwiększa liczbę zdobytych celów i aktualizuje poziom, jeśli wymagania są spełnione
         self.camps_done += 1
-        if self.camps_done >= self.camps_required[self.lvl - 1]:
-            self.lvl += 1
+        if self.lvl<=len(camps_required):
+            if self.camps_done >= self.camps_required[self.lvl - 1]:
+                self.lvl += 1
+    
     def reset(self):
         self.lvl=1
         self.camps_done=0
@@ -37,9 +47,9 @@ class Champion:
         return (f"Postać: {self.name}\nPoziom: {self.lvl} \nIlość celów: {self.camps_done}")
 
 # Lista przykładowych postaci
-champ1=Champion('Kha\'Zix',[0.98,0.97,0.95,0.93,0.9,0.8],[1,1,0.8,0.8,0.8,0.8])
-champ2=Champion('Wukong',[1,0.99,0.97,0.95,0.9,0.9],[0.9,0.9,0.8,0.8,0.8,0.8])
-champ3=Champion('Gragas',[0.99,0.98,0.95,0.92,0.85,0.85],[1,1,0.85,0.85,0.85,0.85])
+champ1=Champion('Kha\'Zix',[0.98,0.97,0.95,0.93,0.9,0.8,0.78],[1,1,0.8,0.8,0.8,0.8,0.8])
+champ2=Champion('Wukong',[1,0.99,0.97,0.95,0.9,0.9,0.85],[0.9,0.9,0.8,0.8,0.8,0.8,0.8])
+champ3=Champion('Gragas',[0.99,0.98,0.95,0.92,0.85,0.85,0.83],[1,1,0.85,0.85,0.85,0.85,0.85])
 champ_list1 = [champ1, champ2, champ3]
 
 # Klasa reprezentująca rozwiązanie (trasę i wybraną postać)
@@ -111,10 +121,11 @@ class Mapa:
         # Dodanie kosztu dla ostatniego celu
         total_cost += champ.camp_mod[champ.lvl - 1] * self.camp_cost[lista[i + 1]]
         #print(f"Kolejność celów: {sol.list}\nPostać po przejsciu tych celów:\n{champ} ")
-        if lista[1] not in self.start_nodes or lista[-1] not in self.end_nodes:
+        if lista[0] not in self.start_nodes or lista[-1] not in self.end_nodes:
             #nakładanie funkcji kary dla wierzchołków które nie znajduja się 
             #w zbiorze wierzchołków początkowych lub końcowych
             total_cost+=100*self.nodes_count
+
         total_cost=round(total_cost,2)
         sol.lvl_after=champ.lvl
         sol.time=total_cost
@@ -124,39 +135,8 @@ class Mapa:
         self.wyswietl_macierz()
         return f"Ilość celów: {self.nodes_count}, wierzchołki początkowe: {self.start_nodes}, wierzchołki końcowe: {self.end_nodes}"
 
-def pmx_crossover(parent1, parent2):
-    size = len(parent1.list)
-    start, end = sorted(random.sample(range(size), 2))
-    
-    child_list = [-1] * size
-    
-    # Kopiowanie fragmentu od parent1
-    child_list[start:end] = parent1.list[start:end]
-    
-    # Wypełnianie brakujących miejsc na podstawie parent2
-    for i in range(start, end):
-        val = parent2.list[i]
-        if val not in child_list:
-            # Szukamy miejsca, gdzie ta wartość powinna trafić
-            while val in parent1.list[start:end]:
-                idx = parent1.list.index(val)
-                val = parent2.list[idx]
-            # Przypisujemy do pierwszego wolnego miejsca
-            if val not in child_list:
-                child_list[child_list.index(-1)] = val
-    
-    # Uzupełnienie pozostałych braków
-    for i in range(size):
-        if child_list[i] == -1:
-            val = parent2.list[i]
-            while val in child_list:  # Pętla będzie trwała, dopóki nie znajdzie pustego miejsca
-                # Jeśli wartość jest już w child_list, to szukamy dalej
-                idx = parent1.list.index(val)
-                val = parent2.list[idx]
-            child_list[i] = val
-    
-    champ = random.choice([parent1.champ, parent2.champ])
-    return solution(child_list, champ_list1.index(champ))
+
+
 
 
 
@@ -229,6 +209,41 @@ def order_crossover(parent1, parent2):
     champ = random.choice([parent1.champ, parent2.champ])
     return solution(child_list, champ_list1.index(champ))
 
+def pmx_crossover(parent1, parent2):
+    size = len(parent1.list)
+    start, end = sorted(random.sample(range(size), 2))
+
+    # Inicjalizacja dziecka
+    child_list = [-1] * size
+
+    # 1. Skopiowanie fragmentu z parent1
+    child_list[start:end] = parent1.list[start:end]
+
+    # 2. Wypełnienie pozostałych miejsc w dziecku
+    mapping = {}  # Słownik do śledzenia mapowania genów
+    for i in range(start, end):
+        mapping[parent1.list[i]] = parent2.list[i]
+
+    for i in range(size):
+        if child_list[i] == -1:
+            value = parent2.list[i]
+            while value in mapping:
+                value = mapping[value]
+            child_list[i] = value
+
+    # Utworzenie obiektu potomka
+    # 4. Sprawdzenie poprawności rozwiązania
+    if len(set(child_list)) != size or -1 in child_list:
+        raise ValueError("PMX crossover failed: duplicate or missing elements.")
+
+    # Wybierz champa losowo z rodziców
+    champ = random.choice([parent1.champ, parent2.champ])
+    return solution(child_list, champ_list1.index(champ))
+
+
+
+
+
 
 def genetic_algorithm(map_obj, champ_list, x, y, z, crossover_type, mutation_type):
     """
@@ -264,6 +279,7 @@ def genetic_algorithm(map_obj, champ_list, x, y, z, crossover_type, mutation_typ
     best_solutions = []  # Lista najlepszych rozwiązań w każdym pokoleniu
     
     for _ in range(z):
+        iter=_
         # Obliczanie czasu dla każdej osoby w populacji
         ranked_population = []
         for sol in population:
