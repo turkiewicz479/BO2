@@ -1,6 +1,7 @@
 import random
 import numpy as np
 
+
 def generate_map(n):
     A = np.random.rand(n, n)*35 # Generowanie losowej macierzy
     symmetric_matrix = (A + A.T) / 2  # Symetryzacja
@@ -253,7 +254,7 @@ def genetic_algorithm(map_obj, champ_list, x, y, z, crossover_type, mutation_typ
         map_obj (Mapa): Obiekt reprezentujący mapę.
         champ_list (list): Lista dostępnych postaci.
         x (int): Liczba losowych rozwiązań w początkowej populacji.
-        y (float): Procent rozwiązań poddawanych mutacji (0 <= y <= 100).
+        y (int): Procent rozwiązań poddawanych mutacji (0 <= y <= 100).
         z (int): Liczba iteracji (pokoleń) algorytmu.
         crossover_type (str): Typ krzyżowania ('pmx', 'cycle', 'order').
         
@@ -296,13 +297,21 @@ def genetic_algorithm(map_obj, champ_list, x, y, z, crossover_type, mutation_typ
         
         # Tworzenie nowej populacji przez krzyżowanie najlepszych rozwiązań
         new_population = []
-        for i in range(0, len(ranked_population)-1, 2):
-            parent1, parent2 = ranked_population[i][0], ranked_population[i + 1][0]
+        ranking_weights = [1 / (i + 1) for i in range(len(ranked_population))]  # Mniejsze indeksy mają większą wagę
+        total_weight = sum(ranking_weights)
+
+        for _ in range(len(ranked_population) // 2):
+            # Losowanie rodziców z uwzględnieniem wag
+            parent1 = random.choices([individual[0] for individual in ranked_population], weights=ranking_weights, k=1)[0]
+            parent2 = random.choices([individual[0] for individual in ranked_population], weights=ranking_weights, k=1)[0]
+            
+            # Krzyżowanie
             child1 = crossover(parent1, parent2, crossover_type)
             child2 = crossover(parent2, parent1, crossover_type)
+            
+            # Dodawanie dzieci do nowej populacji
             new_population.append(child1)
             new_population.append(child2)
-        print(f"Pętla iteracji: {_}, Rozmiar populacji: {len(new_population)}")
         
         # Mutacja określonego procenta populacji
         mutation_count = int(len(new_population) * y / 100)
