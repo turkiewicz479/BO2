@@ -9,17 +9,14 @@ class GeneticAlgorithmApp(tk.Tk):
         super().__init__()
         self.title("Aplikacja algorytmu genetycznego")
         
-        # Zakładki
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(fill="both", expand=True)
 
-        # Zakładka ustawień i wyników
         self.settings_frame = ttk.Frame(self.notebook)
         self.results_frame = ttk.Frame(self.notebook)
         self.notebook.add(self.settings_frame, text="Ustawienia i wyniki")
         self.notebook.add(self.results_frame, text="Wykres wyników")
 
-        # Pola do parametrów mapy
         self.map_size_label = tk.Label(self.settings_frame, text="Wielkość mapy:")
         self.map_size_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.map_size_entry = tk.Entry(self.settings_frame)
@@ -35,7 +32,6 @@ class GeneticAlgorithmApp(tk.Tk):
         self.d_end_size_entry = tk.Entry(self.settings_frame)
         self.d_end_size_entry.grid(row=2, column=1, padx=5, pady=5)
 
-        # Listy rozwijane dla typu krzyżowania i mutacji
         self.crossover_label = tk.Label(self.settings_frame, text="Typ krzyżowania:")
         self.crossover_label.grid(row=3, column=0, padx=5, pady=5, sticky="w")
         self.crossover_var = tk.StringVar(value="pmx")
@@ -48,7 +44,6 @@ class GeneticAlgorithmApp(tk.Tk):
         self.mutation_menu = ttk.Combobox(self.settings_frame, textvariable=self.mutation_var, values=["swap", "inversion", "champ"], state="readonly")
         self.mutation_menu.grid(row=4, column=1, padx=5, pady=5)
 
-        # Pola do parametrów algorytmu genetycznego
         self.population_size_label = tk.Label(self.settings_frame, text="Wielkość populacji:")
         self.population_size_label.grid(row=5, column=0, padx=5, pady=5, sticky="w")
         self.population_size_entry = tk.Entry(self.settings_frame)
@@ -64,19 +59,15 @@ class GeneticAlgorithmApp(tk.Tk):
         self.mutation_rate_entry = tk.Entry(self.settings_frame)
         self.mutation_rate_entry.grid(row=7, column=1, padx=5, pady=5)
 
-        # Przycisk do generowania mapy
         self.generate_map_button = tk.Button(self.settings_frame, text="Generuj mapę", command=self.generate_map)
         self.generate_map_button.grid(row=8, column=0, columnspan=2, pady=10)
 
-        # Przycisk do uruchamiania algorytmu
         self.run_button = tk.Button(self.settings_frame, text="Uruchom algorytm", command=self.run_algorithm)
         self.run_button.grid(row=9, column=0, columnspan=2, pady=10)
 
-        # Pole wyświetlania wyników
         self.results_text = tk.Text(self.settings_frame, height=10, width=50)
         self.results_text.grid(row=10, column=0, columnspan=2, padx=5, pady=5)
 
-        # Ustawienia wykresu w drugiej zakładce
         self.fig, self.ax = plt.subplots(figsize=(6, 4))
         self.ax.set_title("Jakość rozwiązań w kolejnych generacjach")
         self.ax.set_xlabel("Generacja")
@@ -84,20 +75,17 @@ class GeneticAlgorithmApp(tk.Tk):
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.results_frame)
         self.canvas.get_tk_widget().pack(fill="both", expand=True)
 
-        # Dane do wykresu
         self.generations = []
         self.scores = []
 
-        self.map2 = None  # Zmienna do przechowywania wygenerowanej mapy
+        self.map2 = None
 
     def generate_map(self):
         try:
-            # Pobierz wartości z pól tekstowych
             map_size = int(self.map_size_entry.get())
             d_start_size = int(self.d_start_size_entry.get())
             d_end_size = int(self.d_end_size_entry.get())
 
-            # Generuj wierzchołki startowe i końcowe oraz mapę
             d_start = generate_unique_numbers(d_start_size, 0, map_size-1)
             d_end = generate_unique_numbers(d_end_size, 0, map_size-1)
             m2, nodes_time = generate_map(map_size)
@@ -112,17 +100,14 @@ class GeneticAlgorithmApp(tk.Tk):
             if not self.map2:
                 raise ValueError("Najpierw wygeneruj mapę!")
 
-            # Pobierz wartości z interfejsu
             population_size = int(self.population_size_entry.get())
             num_generations = int(self.num_generations_entry.get())
             mutation_rate = int(self.mutation_rate_entry.get())
             crossover_type = self.crossover_var.get()
             mutation_type = self.mutation_var.get()
 
-            # Uruchom algorytm genetyczny
             list_of_sol, best_sol = genetic_algorithm(self.map2, champ_list1, population_size, mutation_rate,num_generations, crossover_type, mutation_type)
 
-            # Aktualizuj wykres
             self.generations = list(range(1, len(list_of_sol) + 1))
             self.scores = [sol.time for sol in list_of_sol]
             self.ax.clear()
@@ -132,7 +117,6 @@ class GeneticAlgorithmApp(tk.Tk):
             self.ax.set_ylabel("Czas rozwiązania")
             self.canvas.draw()
 
-            # Wyświetl wyniki
             self.results_text.insert(tk.END, f"Najlepsze rozwiązanie: {best_sol}\n")
         except Exception as e:
             self.results_text.insert(tk.END, f"Błąd podczas uruchamiania algorytmu: {e}\n")
