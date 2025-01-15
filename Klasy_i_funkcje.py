@@ -21,7 +21,7 @@ def generate_unique_numbers(x, a, b):
 
 
 
-camps_required = [1, 3, 6, 12, 24, 48, 72, 96, 120,144,168,192,216,240,264,288,312]
+camps_required = [1, 3, 6, 12, 24, 48, 72, 96, 120,144,168,192,216,240,264,288,312]# Ilość celi wymaganych by awansować na dany poziom
 class Champion:
     def __init__(self, name, camp_mod, travel_mod):
         self.name = name
@@ -29,8 +29,8 @@ class Champion:
         self.travel_mod = travel_mod 
         self.lvl = 1 
         self.camps_done = 0  
-        self.camps_required = camps_required  # Ilość celi wymaganych by awansować na dany poziom
-        #5 wartośći camps required oznacza to że zaczynajac od poziomu pierwszego maksymalny to 6
+        self.camps_required = camps_required  
+        
 
     def zdobycie_celu(self):
         self.camps_done += 1
@@ -257,18 +257,16 @@ def genetic_algorithm(map_obj, champ_list, x, y, z, crossover_type, mutation_typ
          
             child1 = crossover(parent1, parent2, crossover_type)
             child2 = crossover(parent2, parent1, crossover_type)
-            
-            # Dodawanie dzieci do nowej populacji
+        
             new_population.append(child1)
             new_population.append(child2)
-        
-        # Mutacja określonego procenta populacji
+            
         mutation_count = int(len(new_population) * y / 100)
         for _ in range(mutation_count):
             sol_to_mutate = random.choice(new_population)
             mutate(sol_to_mutate, mutation_type)
         
-        # Uzupełnienie populacji o nowe losowe rozwiązania (jeśli populacja jest zbyt mała)
+         
         max_attempts = 1000
         attempts = 0
         while len(new_population) < x and attempts < max_attempts:
@@ -283,7 +281,6 @@ def genetic_algorithm(map_obj, champ_list, x, y, z, crossover_type, mutation_typ
         
         population = new_population
 
-    # Wybranie najlepszego rozwiązania ogółem
     overall_best = min(best_solutions, key=lambda x: x[1])
     only_solutions=[]
     for sol in best_solutions:
