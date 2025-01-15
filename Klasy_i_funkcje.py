@@ -21,7 +21,7 @@ def generate_unique_numbers(x, a, b):
 
 
 
-camps_required = [1, 3, 6, 12, 24]
+camps_required = [1, 3, 6, 12, 24, 48, 72, 96, 120,144,168,192,216,240,264,288,312]
 class Champion:
     def __init__(self, name, camp_mod, travel_mod):
         self.name = name
@@ -29,7 +29,7 @@ class Champion:
         self.travel_mod = travel_mod 
         self.lvl = 1 
         self.camps_done = 0  
-        self.camps_required = [1, 3, 6, 12, 24]  # Ilość celi wymaganych by awansować na dany poziom
+        self.camps_required = camps_required  # Ilość celi wymaganych by awansować na dany poziom
         #5 wartośći camps required oznacza to że zaczynajac od poziomu pierwszego maksymalny to 6
 
     def zdobycie_celu(self):
@@ -37,6 +37,7 @@ class Champion:
         if self.lvl<=len(camps_required):
             if self.camps_done >= self.camps_required[self.lvl - 1]:
                 self.lvl += 1
+
     
     def reset(self):
         self.lvl=1
@@ -46,9 +47,9 @@ class Champion:
         return (f"Postać: {self.name}\nPoziom: {self.lvl} \nIlość celów: {self.camps_done}")
 
 
-champ1=Champion('Kha\'Zix',[0.98,0.97,0.95,0.93,0.9,0.8,0.78],[1,1,0.8,0.8,0.8,0.8,0.8])
-champ2=Champion('Wukong',[1,0.99,0.97,0.95,0.9,0.9,0.85],[0.9,0.9,0.8,0.8,0.8,0.8,0.8])
-champ3=Champion('Gragas',[0.99,0.98,0.95,0.92,0.85,0.85,0.83],[1,1,0.85,0.85,0.85,0.85,0.85])
+champ1=Champion('Kha\'Zix',[0.98,0.97,0.95,0.93,0.9,0.8,0.78,0.78,0.77,0.75,0.73,0.7,0.7,0.68,0.66,0.65,0.6,0.5],[1,1,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8])
+champ2=Champion('Wukong',[1,0.99,0.97,0.95,0.9,0.9,0.85,0.85,0.84,0.8,0.8,0.75,0.75,0.7,0.6,0.6,0.6,0.6],[0.9,0.9,0.8,0.8,0.8,0.8,0.8,0.7,0.7,0.7,0.7,0.7,0.7,0.6,0.6,0.5,0.5,0.45])
+champ3=Champion('Gragas',[0.99,0.98,0.95,0.92,0.85,0.85,0.83,0.82,0.8,0.77,0.75,0.72,0.68,0.65,0.62,0.6,0.5,0.5],[1,1,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.8,0.8,0.8,0.8,0.8,0.75,0.75,0.75,0.7])
 champ_list1 = [champ1, champ2, champ3]
 
 class solution:
@@ -60,7 +61,7 @@ class solution:
         self.lvl_after=lvl
         self.time=time
     def __str__(self):
-        return (f"Kolejność wierzchołków: {self.list}\nPostać: {self.champ_name}")
+        return (f"Kolejność wierzchołków: \n{self.list}\nPostać: {self.champ_name} \nCzas:{self.time}")
     def __repr__(self): 
         return f"\n{self.champ_name}, {self.list}, {self.lvl_after}, {self.time}"
 

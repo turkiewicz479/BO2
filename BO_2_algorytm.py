@@ -12,8 +12,15 @@ class GeneticAlgorithmApp(tk.Tk):
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(fill="both", expand=True)
 
+
+
+
+
         self.settings_frame = ttk.Frame(self.notebook)
         self.results_frame = ttk.Frame(self.notebook)
+        self.settings_frame.rowconfigure(10, weight=1)
+        self.settings_frame.columnconfigure(0, weight=1) 
+        self.settings_frame.columnconfigure(1, weight=1)  
         self.notebook.add(self.settings_frame, text="Ustawienia i wyniki")
         self.notebook.add(self.results_frame, text="Wykres wyników")
 
@@ -63,10 +70,12 @@ class GeneticAlgorithmApp(tk.Tk):
         self.generate_map_button.grid(row=8, column=0, columnspan=2, pady=10)
 
         self.run_button = tk.Button(self.settings_frame, text="Uruchom algorytm", command=self.run_algorithm)
-        self.run_button.grid(row=9, column=0, columnspan=2, pady=10)
+        self.run_button.grid(row=9, column=0, columnspan=2, pady=10) 
 
         self.results_text = tk.Text(self.settings_frame, height=10, width=50)
-        self.results_text.grid(row=10, column=0, columnspan=2, padx=5, pady=5)
+        self.results_text.grid(row=10, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
+
+
 
         self.fig, self.ax = plt.subplots(figsize=(6, 4))
         self.ax.set_title("Jakość rozwiązań w kolejnych generacjach")
@@ -77,6 +86,7 @@ class GeneticAlgorithmApp(tk.Tk):
 
         self.generations = []
         self.scores = []
+
 
         self.map2 = None
 
@@ -117,7 +127,7 @@ class GeneticAlgorithmApp(tk.Tk):
             self.ax.set_ylabel("Czas rozwiązania")
             self.canvas.draw()
 
-            self.results_text.insert(tk.END, f"Najlepsze rozwiązanie: {best_sol}\n")
+            self.results_text.insert(tk.END, f"Najlepsze rozwiązanie: \n{best_sol[0]}\n")
         except Exception as e:
             self.results_text.insert(tk.END, f"Błąd podczas uruchamiania algorytmu: {e}\n")
 
