@@ -1,0 +1,773 @@
+Wyniki testów dla test_sample = 100
+
+===
+Rozmiar mapy: 10 wierzcho³ków
+===
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 298.60, Odchylenie standardowe: 12.39, Najlepszy wynik: 272.52
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 308.01, Odchylenie standardowe: 97.77, Najlepszy wynik: 264.70
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 316.08, Odchylenie standardowe: 137.09, Najlepszy wynik: 270.57
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 307.62, Odchylenie standardowe: 97.75, Najlepszy wynik: 265.86
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 317.46, Odchylenie standardowe: 136.81, Najlepszy wynik: 275.04
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 307.53, Odchylenie standardowe: 97.38, Najlepszy wynik: 265.85
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 306.83, Odchylenie standardowe: 97.58, Najlepszy wynik: 267.76
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 295.12, Odchylenie standardowe: 11.00, Najlepszy wynik: 269.58
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 307.90, Odchylenie standardowe: 97.62, Najlepszy wynik: 268.98
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 291.44, Odchylenie standardowe: 9.43, Najlepszy wynik: 265.34
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 290.76, Odchylenie standardowe: 8.84, Najlepszy wynik: 263.17
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 291.23, Odchylenie standardowe: 9.86, Najlepszy wynik: 262.35
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 291.29, Odchylenie standardowe: 10.62, Najlepszy wynik: 260.30
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 290.29, Odchylenie standardowe: 8.95, Najlepszy wynik: 263.25
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 291.14, Odchylenie standardowe: 8.66, Najlepszy wynik: 269.41
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 291.87, Odchylenie standardowe: 9.06, Najlepszy wynik: 269.81
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 289.81, Odchylenie standardowe: 8.67, Najlepszy wynik: 266.48
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 290.41, Odchylenie standardowe: 10.11, Najlepszy wynik: 266.95
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 282.91, Odchylenie standardowe: 8.04, Najlepszy wynik: 255.08
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 283.12, Odchylenie standardowe: 6.70, Najlepszy wynik: 262.09
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 284.30, Odchylenie standardowe: 8.19, Najlepszy wynik: 256.55
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 283.44, Odchylenie standardowe: 7.25, Najlepszy wynik: 265.28
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 283.51, Odchylenie standardowe: 8.09, Najlepszy wynik: 262.87
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 282.79, Odchylenie standardowe: 8.39, Najlepszy wynik: 258.18
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 284.42, Odchylenie standardowe: 8.48, Najlepszy wynik: 257.09
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 283.77, Odchylenie standardowe: 8.11, Najlepszy wynik: 264.79
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 284.42, Odchylenie standardowe: 7.50, Najlepszy wynik: 266.27
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 300.55, Odchylenie standardowe: 9.72, Najlepszy wynik: 275.42
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 317.59, Odchylenie standardowe: 135.99, Najlepszy wynik: 276.39
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 316.19, Odchylenie standardowe: 135.59, Najlepszy wynik: 266.03
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 309.51, Odchylenie standardowe: 97.48, Najlepszy wynik: 267.63
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 309.69, Odchylenie standardowe: 97.83, Najlepszy wynik: 272.93
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 296.93, Odchylenie standardowe: 12.01, Najlepszy wynik: 269.70
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 296.02, Odchylenie standardowe: 10.74, Najlepszy wynik: 268.34
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 308.09, Odchylenie standardowe: 96.29, Najlepszy wynik: 268.47
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 317.64, Odchylenie standardowe: 137.07, Najlepszy wynik: 263.82
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 307.00, Odchylenie standardowe: 96.84, Najlepszy wynik: 266.18
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 309.24, Odchylenie standardowe: 98.29, Najlepszy wynik: 273.16
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 305.74, Odchylenie standardowe: 97.65, Najlepszy wynik: 261.61
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 315.34, Odchylenie standardowe: 137.40, Najlepszy wynik: 264.47
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 308.33, Odchylenie standardowe: 97.88, Najlepszy wynik: 269.91
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 336.36, Odchylenie standardowe: 191.19, Najlepszy wynik: 269.23
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 307.06, Odchylenie standardowe: 97.40, Najlepszy wynik: 263.89
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 317.45, Odchylenie standardowe: 135.44, Najlepszy wynik: 277.09
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 326.82, Odchylenie standardowe: 166.88, Najlepszy wynik: 270.64
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 340.02, Odchylenie standardowe: 190.64, Najlepszy wynik: 260.20
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 309.14, Odchylenie standardowe: 97.04, Najlepszy wynik: 266.22
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 298.78, Odchylenie standardowe: 11.77, Najlepszy wynik: 271.03
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 306.99, Odchylenie standardowe: 98.18, Najlepszy wynik: 265.05
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 307.49, Odchylenie standardowe: 97.88, Najlepszy wynik: 264.81
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 297.21, Odchylenie standardowe: 11.92, Najlepszy wynik: 264.21
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 309.04, Odchylenie standardowe: 97.29, Najlepszy wynik: 274.70
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 296.00, Odchylenie standardowe: 13.23, Najlepszy wynik: 268.94
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 307.28, Odchylenie standardowe: 97.69, Najlepszy wynik: 266.41
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 325.26, Odchylenie standardowe: 165.52, Najlepszy wynik: 258.24
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 318.46, Odchylenie standardowe: 136.65, Najlepszy wynik: 269.63
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 308.82, Odchylenie standardowe: 98.15, Najlepszy wynik: 275.01
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 299.49, Odchylenie standardowe: 13.10, Najlepszy wynik: 264.82
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 328.40, Odchylenie standardowe: 166.17, Najlepszy wynik: 274.57
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 327.70, Odchylenie standardowe: 166.37, Najlepszy wynik: 270.94
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 308.45, Odchylenie standardowe: 98.16, Najlepszy wynik: 268.12
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 298.71, Odchylenie standardowe: 12.60, Najlepszy wynik: 271.94
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 307.15, Odchylenie standardowe: 98.63, Najlepszy wynik: 267.70
+
+===
+Rozmiar mapy: 25 wierzcho³ków
+===
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 767.58, Odchylenie standardowe: 420.58, Najlepszy wynik: 641.69
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 742.66, Odchylenie standardowe: 345.39, Najlepszy wynik: 646.52
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 722.58, Odchylenie standardowe: 245.74, Najlepszy wynik: 645.71
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 767.32, Odchylenie standardowe: 418.71, Najlepszy wynik: 650.44
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 720.97, Odchylenie standardowe: 246.11, Najlepszy wynik: 624.10
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 740.49, Odchylenie standardowe: 346.02, Najlepszy wynik: 632.84
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 820.78, Odchylenie standardowe: 535.16, Najlepszy wynik: 653.18
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 722.66, Odchylenie standardowe: 241.18, Najlepszy wynik: 651.52
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 721.05, Odchylenie standardowe: 244.52, Najlepszy wynik: 649.86
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 684.59, Odchylenie standardowe: 19.33, Najlepszy wynik: 620.17
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 684.52, Odchylenie standardowe: 20.46, Najlepszy wynik: 638.24
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 684.51, Odchylenie standardowe: 19.48, Najlepszy wynik: 644.48
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 682.13, Odchylenie standardowe: 16.80, Najlepszy wynik: 624.55
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 682.61, Odchylenie standardowe: 16.57, Najlepszy wynik: 631.65
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 680.88, Odchylenie standardowe: 20.35, Najlepszy wynik: 603.41
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 685.74, Odchylenie standardowe: 19.28, Najlepszy wynik: 644.29
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 679.81, Odchylenie standardowe: 16.33, Najlepszy wynik: 641.56
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 680.86, Odchylenie standardowe: 18.95, Najlepszy wynik: 637.48
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 669.53, Odchylenie standardowe: 17.04, Najlepszy wynik: 616.69
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 669.50, Odchylenie standardowe: 14.49, Najlepszy wynik: 636.06
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 668.88, Odchylenie standardowe: 15.73, Najlepszy wynik: 631.48
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 665.76, Odchylenie standardowe: 14.90, Najlepszy wynik: 629.39
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 672.77, Odchylenie standardowe: 14.80, Najlepszy wynik: 623.71
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 667.69, Odchylenie standardowe: 16.63, Najlepszy wynik: 608.21
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 668.75, Odchylenie standardowe: 14.80, Najlepszy wynik: 628.52
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 672.13, Odchylenie standardowe: 16.45, Najlepszy wynik: 608.60
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 667.75, Odchylenie standardowe: 18.98, Najlepszy wynik: 602.20
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 741.98, Odchylenie standardowe: 345.38, Najlepszy wynik: 642.18
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 742.80, Odchylenie standardowe: 347.52, Najlepszy wynik: 623.23
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 745.55, Odchylenie standardowe: 344.06, Najlepszy wynik: 636.31
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 721.99, Odchylenie standardowe: 246.47, Najlepszy wynik: 641.69
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 772.18, Odchylenie standardowe: 416.36, Najlepszy wynik: 614.88
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 717.62, Odchylenie standardowe: 245.74, Najlepszy wynik: 638.26
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 715.40, Odchylenie standardowe: 245.58, Najlepszy wynik: 628.31
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 720.11, Odchylenie standardowe: 245.76, Najlepszy wynik: 635.85
+
+Parametry:
+Liczba pokoleñ: 20, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 795.54, Odchylenie standardowe: 481.48, Najlepszy wynik: 654.79
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 696.64, Odchylenie standardowe: 24.28, Najlepszy wynik: 636.45
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 746.72, Odchylenie standardowe: 344.22, Najlepszy wynik: 654.68
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 720.34, Odchylenie standardowe: 244.19, Najlepszy wynik: 658.31
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 768.25, Odchylenie standardowe: 421.61, Najlepszy wynik: 624.50
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 690.69, Odchylenie standardowe: 22.28, Najlepszy wynik: 647.69
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 744.01, Odchylenie standardowe: 343.13, Najlepszy wynik: 639.51
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 718.04, Odchylenie standardowe: 246.63, Najlepszy wynik: 619.28
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 750.07, Odchylenie standardowe: 341.76, Najlepszy wynik: 623.43
+
+Parametry:
+Liczba pokoleñ: 50, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 774.68, Odchylenie standardowe: 416.92, Najlepszy wynik: 635.72
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 739.05, Odchylenie standardowe: 344.05, Najlepszy wynik: 637.54
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 697.36, Odchylenie standardowe: 25.34, Najlepszy wynik: 628.56
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 746.90, Odchylenie standardowe: 346.11, Najlepszy wynik: 644.54
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 744.86, Odchylenie standardowe: 343.35, Najlepszy wynik: 636.22
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 767.48, Odchylenie standardowe: 420.35, Najlepszy wynik: 635.98
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 721.43, Odchylenie standardowe: 244.13, Najlepszy wynik: 632.69
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 742.31, Odchylenie standardowe: 344.19, Najlepszy wynik: 632.20
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 743.24, Odchylenie standardowe: 344.84, Najlepszy wynik: 643.46
+
+Parametry:
+Szansa na mutacje: 20, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 772.05, Odchylenie standardowe: 418.19, Najlepszy wynik: 634.86
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 722.70, Odchylenie standardowe: 241.24, Najlepszy wynik: 649.15
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 745.00, Odchylenie standardowe: 343.23, Najlepszy wynik: 650.81
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 774.33, Odchylenie standardowe: 420.01, Najlepszy wynik: 635.01
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 769.95, Odchylenie standardowe: 418.72, Najlepszy wynik: 659.93
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 700.53, Odchylenie standardowe: 23.04, Najlepszy wynik: 636.84
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 725.46, Odchylenie standardowe: 244.60, Najlepszy wynik: 648.09
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 814.17, Odchylenie standardowe: 534.40, Najlepszy wynik: 643.95
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 720.54, Odchylenie standardowe: 246.21, Najlepszy wynik: 642.83
+
+Parametry:
+Szansa na mutacje: 50, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 819.77, Odchylenie standardowe: 535.71, Najlepszy wynik: 652.82
+
+===
+Rozmiar mapy: 50 wierzcho³ków
+===
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1405.00, Odchylenie standardowe: 493.12, Najlepszy wynik: 1260.57
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1500.33, Odchylenie standardowe: 842.27, Najlepszy wynik: 1235.07
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 1450.81, Odchylenie standardowe: 692.37, Najlepszy wynik: 1262.00
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1403.26, Odchylenie standardowe: 491.78, Najlepszy wynik: 1264.00
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1394.90, Odchylenie standardowe: 494.16, Najlepszy wynik: 1284.17
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 1503.48, Odchylenie standardowe: 838.82, Najlepszy wynik: 1256.10
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1396.96, Odchylenie standardowe: 492.96, Najlepszy wynik: 1245.38
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1500.82, Odchylenie standardowe: 843.38, Najlepszy wynik: 1270.70
+
+Parametry:
+Rozmiar populacji: 100, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 1445.85, Odchylenie standardowe: 689.51, Najlepszy wynik: 1263.54
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1329.99, Odchylenie standardowe: 30.61, Najlepszy wynik: 1250.94
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1335.38, Odchylenie standardowe: 32.34, Najlepszy wynik: 1264.21
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 1332.21, Odchylenie standardowe: 30.44, Najlepszy wynik: 1248.25
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1331.96, Odchylenie standardowe: 29.00, Najlepszy wynik: 1278.73
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1330.45, Odchylenie standardowe: 28.86, Najlepszy wynik: 1273.01
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 1328.82, Odchylenie standardowe: 31.19, Najlepszy wynik: 1252.71
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1327.32, Odchylenie standardowe: 31.78, Najlepszy wynik: 1268.73
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1327.45, Odchylenie standardowe: 29.45, Najlepszy wynik: 1259.42
+
+Parametry:
+Rozmiar populacji: 200, Typ krzy¿owania: order, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 1327.90, Odchylenie standardowe: 30.95, Najlepszy wynik: 1246.03
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1305.82, Odchylenie standardowe: 26.49, Najlepszy wynik: 1246.35
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1306.45, Odchylenie standardowe: 24.47, Najlepszy wynik: 1246.31
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: pmx, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 1308.48, Odchylenie standardowe: 21.91, Najlepszy wynik: 1242.05
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1302.99, Odchylenie standardowe: 22.09, Najlepszy wynik: 1220.38
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1307.48, Odchylenie standardowe: 25.47, Najlepszy wynik: 1185.04
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: cycle, Typ mutacji: champ
+Otrzymane wyniki:
+Wartoœæ œrednia: 1301.43, Odchylenie standardowe: 23.46, Najlepszy wynik: 1235.00
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: order, Typ mutacji: swap
+Otrzymane wyniki:
+Wartoœæ œrednia: 1306.42, Odchylenie standardowe: 22.84, Najlepszy wynik: 1237.86
+
+Parametry:
+Rozmiar populacji: 500, Typ krzy¿owania: order, Typ mutacji: inversion
+Otrzymane wyniki:
+Wartoœæ œrednia: 1308.40, Odchylenie standardowe: 22.64, Najlepszy wynik: 1253.29
