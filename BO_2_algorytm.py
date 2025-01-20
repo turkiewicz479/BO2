@@ -12,10 +12,6 @@ class GeneticAlgorithmApp(tk.Tk):
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(fill="both", expand=True)
 
-
-
-
-
         self.settings_frame = ttk.Frame(self.notebook)
         self.results_frame = ttk.Frame(self.notebook)
         self.settings_frame.rowconfigure(10, weight=1)
@@ -121,7 +117,7 @@ class GeneticAlgorithmApp(tk.Tk):
             self.generations = list(range(1, len(list_of_sol) + 1))
             self.scores = [sol.time for sol in list_of_sol]
             self.ax.clear()
-            self.ax.plot(self.generations, self.scores, marker="o")
+            self.ax.plot(self.generations, self.scores, linestyle='None',marker="o")
             self.ax.set_title("Jakość rozwiązań w kolejnych generacjach")
             self.ax.set_xlabel("Generacja")
             self.ax.set_ylabel("Czas rozwiązania")
